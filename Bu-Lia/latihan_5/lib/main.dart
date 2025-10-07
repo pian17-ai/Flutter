@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // useInheritedMediaQuery: true, // penting biar ukuran layar menyesuaikan
-      builder: DevicePreview.appBuilder, // builder dari DevicePreview
+      // useInheritedMediaQuery: true,
+      builder: DevicePreview.appBuilder,
       locale: DevicePreview.locale(context),
       debugShowCheckedModeBanner: false,
       title: "Naspad padang wenak",
