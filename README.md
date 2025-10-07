@@ -18,3 +18,14 @@ useInheritedMediaQuery: true,
 builder: DevicePreview.appBuilder,
 locale: DevicePreview.locale(context),
 ```
+
+```bash
+void main() {
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const MyApp(),
+    ),
+  );
+}
+```
