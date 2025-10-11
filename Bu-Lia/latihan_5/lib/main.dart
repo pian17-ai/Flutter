@@ -129,7 +129,7 @@ class LaukPage extends StatelessWidget {
                       ),
                       const Text("Rendang"),
                       const SizedBox(height: 10),
-                      const Text("sadhasdasdjsdjhshbhb"),
+                      const Text("Rendang adalah masakan daging khas Minangkabau dari Sumatera Barat yang dimasak dalam santan dan berbagai rempah-rempah dalam waktu lama hingga kuahnya mengering dan dagingnya berwarna gelap"),
                       const SizedBox(height: 10),
                     ],
                   ),
