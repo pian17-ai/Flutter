@@ -69,12 +69,6 @@ flutter:
     - assets/gallery/giraffe.jpg
     - assets/gallery/birds.jpg
 
-    - assets/my/tes.jpg
-    - assets/my/tess.jpg
-    - assets/my/tesss.jpg
-    - assets/my/tessss.jpg
-    - assets/my/tesssss.jpg
-    - assets/my/tessssss.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
