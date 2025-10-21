@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:http:/http.dart/ as http';
+import 'package:http/http.dart' as http;
+import 'package:latihan_8/AddProduct.dart';
 
 class Productpage extends StatefulWidget {
   const Productpage({super.key});
@@ -26,17 +26,14 @@ Future _getData() async {
         _loading = false;
       });
     }
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content:Text('Product berhasil dihapus')),
-    );
     else {
     throw Exception('Product gagal dihapus');
   }
   }  catch (e) {
     print(e);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: content)
-    )
+    // ScaffoldMessenger.of(context).showSnackBar(
+    //   SnackBar(content: content)
+    // )
   }
 }
 
@@ -49,11 +46,23 @@ Future<void> _deleteProduct(String idProduct) async {
 
     if (respon.statusCode == 200) {
       setState(() {
-        _listdata.removeWhere((item) => 
-        item['id_product'] == idProduct);
+        _listdata.removeWhere((item) => item['id_product'] == idProduct);
       });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content:Text('Product berhasil dihapus')),
+    );
+
+    } else {
+      throw Exception('Product gagal dihapus');
     }
+  } catch (e) {
+    print(e);
   }
+}
+
+void initState() {
+  _getData();
+  super.initState();
 }
 
   @override
@@ -84,12 +93,12 @@ Future<void> _deleteProduct(String idProduct) async {
                       },
                     )
                   )
-                )
+                );
               },
               child:ListTile(
                 title:Text(_listdata[index]['name_product'].toString()),
                 subtitle: (_listdata[index]['price_product']),
-                trailing :IconButton(
+                trailing: IconButton(
                   onPressed:(){
                     Navigator.push(
                   context,
@@ -102,29 +111,29 @@ Future<void> _deleteProduct(String idProduct) async {
                       },
                     )
                   )
-                ),
+                );
+                  },
                 icon:Icon(Icons.edit),
-                  }
                 )
               )
             )
-          )
+          );
         }
       ),
       ),
-  floatingActionButton: floatingActionButton(
+  floatingActionButton: FloatingActionButton(
     child:Text(
       '+',
-      style:TextStyle(fontSize:20)
+      style:TextStyle(fontSize:20),
     ),
-    onPressed() {
+    onPressed:() {
       Navigator.push(
         context, MaterialPageRoute(builder:
           (context)=>AddProduct()
         )
       );
     }
-  ),,
+  ),
     );
   }
 }
