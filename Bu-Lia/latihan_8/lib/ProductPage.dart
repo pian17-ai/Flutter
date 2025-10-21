@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:http:/http.dart/ as http';
 
 class Productpage extends StatefulWidget {
@@ -12,10 +15,44 @@ class _ProductpageState extends State<Productpage> {
 List _listdata = [];
 bool _loading = true;
 
-Future = getData() async {
+Future _getData() async {
   try {
     final respon = 
-    await http.get(Uri.parse('http://localhost/PHP/Product_API/read.php'));
+      await http.get(Uri.parse('http://localhost/PHP/Product_API/read.php'));
+    if (respon.statusCode == 200) {
+      final data = jsonDecode(respon.body);
+      setState(() {
+        _listdata = data;
+        _loading = false;
+      });
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content:Text('Product berhasil dihapus')),
+    );
+    else {
+    throw Exception('Product gagal dihapus');
+  }
+  }  catch (e) {
+    print(e);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: content)
+    )
+  }
+}
+
+Future<void> _deleteProduct(String idProduct) async {
+  try {
+    final respon = 
+    await http.post(Uri.parse('http://localhost/PHP/Product_API/delete.php'), body: {
+      'id_product': idProduct,
+    });
+
+    if (respon.statusCode == 200) {
+      setState(() {
+        _listdata.removeWhere((item) => 
+        item['id_product'] == idProduct);
+      });
+    }
   }
 }
 
