@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class Productpage extends StatefulWidget {
@@ -9,6 +8,16 @@ class Productpage extends StatefulWidget {
 }
 
 class _ProductpageState extends State<Productpage> {
+List _listdata = [];
+bool _loading = true;
+
+Future = getData() async {
+  try {
+    final respon = 
+    await http.get(Uri.parse())
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,12 +25,13 @@ class _ProductpageState extends State<Productpage> {
         title: Text("Product Page"),
         backgroundColor: Colors.lightBlue,
       ),
-      body: Center(
+      body: _loading
+      ? Center(
         child: CircularProgressIndicator(),
       )
       : ListView.builder(
         itemCount: _listdata.length,
-        itemBuilder: ((context, index)) {
+        itemBuilder: ((context, index) {
           return Card(
             child: InkWell(
               onTap: () {
@@ -62,6 +72,7 @@ class _ProductpageState extends State<Productpage> {
             )
           )
         }
+      ),
       ),
   floatingActionButton: floatingActionButton(
     child:Text(
