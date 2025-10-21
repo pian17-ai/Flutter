@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http:/http.dart/ as http';
 
 class Productpage extends StatefulWidget {
   const Productpage({super.key});
@@ -14,7 +15,7 @@ bool _loading = true;
 Future = getData() async {
   try {
     final respon = 
-    await http.get(Uri.parse())
+    await http.get(Uri.parse('http://localhost/PHP/Product_API/read.php'));
   }
 }
 
