@@ -10,6 +10,28 @@ class AddProduct extends StatefulWidget {
 class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text("Tambah product")),
+
+      body: Form(
+        key: formkey,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              TextFormField(
+                controller: nama_product,
+                decoration: InputDecoration(
+                  hintText: 'Product name',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
