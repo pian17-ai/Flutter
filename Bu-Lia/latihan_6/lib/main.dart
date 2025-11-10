@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
+import 'package:latihan_6/HalamanProduct.dart';
+import 'package:latihan_6/User/HalamanUser.dart';
 
 void main() {
   runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -12,8 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // useInheritedMediaQuery: true, // penting biar ukuran layar menyesuaikan
-      builder: DevicePreview.appBuilder, // builder dari DevicePreview
+      builder: DevicePreview.appBuilder,
       locale: DevicePreview.locale(context),
       debugShowCheckedModeBanner: false,
       title: "Nagigation Menu",
@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget {
         '/about': (context) => AboutPage(),
         '/contact': (context) => ContactPage(),
         '/gallery': (context) => GalleryPage(),
+        '/product': (context) => ProductPage(),
+        '/login': (context) => UserPage(),
       },
     );
   }
@@ -79,6 +81,14 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/gallery');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.shopping_basket),
+              title: const Text("Product"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/product');
               },
             ),
           ],
@@ -296,32 +306,39 @@ class ContactPage extends StatelessWidget {
   }
 }
 
+class ProductPage extends StatelessWidget {
+  const ProductPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Product App",
+      home: HalamanProduk(),
+    );
+  }
+}
+
+class UserPage extends StatelessWidget {
+  const UserPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
 class GalleryPage extends StatelessWidget {
   const GalleryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> images = [
-      {
-        "path": "assets/gallery/birds.jpg",
-        "title": "Bird"
-      },
-      {
-        "path": "assets/gallery/giraffe.jpg",
-        "title": "My Desk Setup"
-      },
-      {
-        "path": "assets/gallery/horse.jpg",
-        "title": "Horfish"
-      },
-      {
-        "path": "assets/gallery/miaw.jpg",
-        "title": "Miaw"
-      },
-      {
-        "path": "assets/gallery/mndi.jpg",
-        "title": "DPR"
-      },
+      {"path": "assets/gallery/birds.jpg", "title": "Bird"},
+      {"path": "assets/gallery/giraffe.jpg", "title": "My Desk Setup"},
+      {"path": "assets/gallery/horse.jpg", "title": "Horfish"},
+      {"path": "assets/gallery/miaw.jpg", "title": "Miaw"},
+      {"path": "assets/gallery/mndi.jpg", "title": "DPR"},
     ];
 
     return Scaffold(
@@ -350,8 +367,9 @@ class GalleryPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ClipRRect(
-                      borderRadius:
-                          const BorderRadius.vertical(top: Radius.circular(15)),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(15),
+                      ),
                       child: Image.asset(
                         image["path"]!,
                         fit: BoxFit.cover,
