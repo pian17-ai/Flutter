@@ -79,6 +79,22 @@ class _UbahProdukState extends State<UbahProduk> {
                 },
               ),
               SizedBox(height: 10),
+              TextFormField(
+                controller: image_product,
+                decoration: InputDecoration(
+                  hintText: 'image_product',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Harga produk tidak boleh kosong';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () {
                   if (formKey.currentState!.validate()) {

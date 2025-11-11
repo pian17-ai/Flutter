@@ -13,6 +13,7 @@ class _TambahProdukState extends State<TambahProduk> {
   final formKey = GlobalKey<FormState>();
   TextEditingController name_product = TextEditingController();
   TextEditingController price_product = TextEditingController();
+  TextEditingController image_product = TextEditingController();
 
   Future _simpan() async {
     final respon = await http.post(
@@ -20,6 +21,7 @@ class _TambahProdukState extends State<TambahProduk> {
       body: {
         'name_product': name_product.text,
         'price_product': price_product.text,
+        'image_product': image_product.text,
       },
     );
     if (respon.statusCode == 200) {
@@ -65,6 +67,22 @@ class _TambahProdukState extends State<TambahProduk> {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Harga produk tidak boleh kosong';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 10),
+              TextFormField(
+                controller: image_product,
+                decoration: InputDecoration(
+                  hintText: 'image_product',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Nama produk tidak boleh kosong';
                   }
                   return null;
                 },
