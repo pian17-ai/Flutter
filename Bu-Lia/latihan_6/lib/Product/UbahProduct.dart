@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:latihan_6/HalamanProduct.dart';
+import 'package:latihan_6/Product/HalamanProduct.dart';
 
 class UbahProduk extends StatefulWidget {
   final Map Listdata;
@@ -15,6 +15,7 @@ class _UbahProdukState extends State<UbahProduk> {
   TextEditingController id_product = TextEditingController();
   TextEditingController name_product = TextEditingController();
   TextEditingController price_product = TextEditingController();
+  TextEditingController image_product = TextEditingController();
 
   Future _ubah() async {
     final respon = await http.post(
@@ -23,6 +24,7 @@ class _UbahProdukState extends State<UbahProduk> {
         'id_product': id_product.text,
         'name_product': name_product.text,
         'price_product': price_product.text,
+        'image_product': image_product.text,
       },
     );
     if (respon.statusCode == 200) {
@@ -36,6 +38,7 @@ class _UbahProdukState extends State<UbahProduk> {
     id_product.text = widget.Listdata['id_product'];
     name_product.text = widget.Listdata['name_product'];
     price_product.text = widget.Listdata['price_product'];
+    image_product.text = widget.Listdata['image_product'];
     return Scaffold(
       appBar: AppBar(title: Text('Ubah produk')),
       body: Form(

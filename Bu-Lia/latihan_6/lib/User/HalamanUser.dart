@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:latihan_6/TambahProduct.dart';
-import 'package:latihan_6/UbahProduct.dart';
-import 'package:latihan_6/DetailProduct.dart';
+import 'package:latihan_6/Product/TambahProduct.dart';
+import 'package:latihan_6/Product/UbahProduct.dart';
+import 'package:latihan_6/Product/DetailProduct.dart';
 
 class HalamanProduk extends StatefulWidget {
   const HalamanProduk({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_6/HalamanProduct.dart';
+import 'package:latihan_6/Product/HalamanProduct.dart';
 import 'package:http/http.dart' as http;
 
 class TambahProduk extends StatefulWidget {

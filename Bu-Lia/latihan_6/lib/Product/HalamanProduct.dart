@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:latihan_6/TambahProduct.dart';
-import 'package:latihan_6/UbahProduct.dart';
-import 'package:latihan_6/DetailProduct.dart';
+import 'package:latihan_6/Product/TambahProduct.dart';
+import 'package:latihan_6/Product/UbahProduct.dart';
+import 'package:latihan_6/Product/DetailProduct.dart';
 
 class HalamanProduk extends StatefulWidget {
   const HalamanProduk({super.key});
@@ -67,7 +67,7 @@ class _HalamanProdukState extends State<HalamanProduk> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Halaman Product"),
+        title: const Text("About me"),
         backgroundColor: const Color.fromARGB(255, 247, 187, 255),
       ),
       body: _loading
@@ -87,6 +87,8 @@ class _HalamanProdukState extends State<HalamanProduk> {
                               'name_product': _listdata[index]['name_product'],
                               'price_product':
                                   _listdata[index]['price_product'],
+                              'image_product':
+                                  _listdata[index]['image_product'],
                             },
                           ),
                         ),
@@ -112,6 +114,8 @@ class _HalamanProdukState extends State<HalamanProduk> {
                                           _listdata[index]['name_product'],
                                       'price_product':
                                           _listdata[index]['price_product'],
+                                      'image_product':
+                                          _listdata[index]['image_product'],
                                     },
                                   ),
                                 ),
